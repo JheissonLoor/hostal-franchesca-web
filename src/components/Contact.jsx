@@ -109,11 +109,15 @@ const Contact = () => {
                 <div className="space-y-3 text-sm">
                   <div className="flex items-center space-x-3 text-gray-700">
                     <Phone className="w-5 h-5 text-primary-600" />
-                    <span>+1 (234) 567-890</span>
+                    <a href="tel:+51993215661" className="hover:text-primary-600 transition-colors">
+                      +51 993 215 661
+                    </a>
                   </div>
                   <div className="flex items-center space-x-3 text-gray-700">
                     <Mail className="w-5 h-5 text-primary-600" />
-                    <span>info@hostalfranchesca.com</span>
+                    <a href="mailto:info@hostalfranchesca.com" className="hover:text-primary-600 transition-colors">
+                      info@hostalfranchesca.com
+                    </a>
                   </div>
                 </div>
               </div>

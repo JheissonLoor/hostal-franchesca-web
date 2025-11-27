@@ -19,9 +19,9 @@ const Location = () => {
           {/* Map */}
           <div className="order-2 lg:order-1">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[500px] group">
-              {/* Placeholder for map - Replace with actual Google Maps embed */}
+              {/* Google Maps embed con ubicación de Sihuas, Áncash */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0861854967487!2d-122.41941842346844!3d37.77492981122516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sTwitter%20HQ!5e0!3m2!1sen!2sus!4v1234567890123"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31483.5!2d-77.617!3d-8.567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMzQnMDEuMiJTIDc3wrAzNycwMS4yIlc!5e0!3m2!1ses!2spe!4v1234567890123"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -29,6 +29,7 @@ const Location = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="grayscale hover:grayscale-0 transition-all duration-500"
+                title="Ubicación Hostal Franchesca en Sihuas"
               ></iframe>
 
               {/* Overlay Badge */}
@@ -48,7 +49,7 @@ const Location = () => {
             {/* Directions Button */}
             <div className="mt-6">
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=Hostal+Franchesca"
+                href="https://www.google.com/maps/dir/?api=1&destination=-8.567,-77.617"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-full btn-primary"
@@ -61,7 +62,7 @@ const Location = () => {
 
           {/* Contact Information */}
           <div className="order-1 lg:order-2 space-y-6">
-            <div className="bg-gradient-to-br from-primary-50 to-orange-50 rounded-2xl p-8 space-y-6">
+            <div className="bg-gradient-to-br from-primary-50 to-green-50 rounded-2xl p-8 space-y-6">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 Información de Contacto
               </h3>
@@ -74,9 +75,9 @@ const Location = () => {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">Dirección</h4>
                   <p className="text-gray-700">
-                    Calle Principal #123<br />
-                    Centro de la Ciudad<br />
-                    CP 12345
+                    Jirón Antonio Raymondi s/n<br />
+                    Sihuas, Áncash<br />
+                    CP 02220
                   </p>
                 </div>
               </div>
@@ -89,10 +90,10 @@ const Location = () => {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">Teléfono</h4>
                   <a
-                    href="tel:+123456789"
+                    href="tel:+51993215661"
                     className="text-primary-600 hover:text-primary-700 font-medium"
                   >
-                    +1 (234) 567-890
+                    +51 993 215 661
                   </a>
                   <p className="text-sm text-gray-600 mt-1">
                     WhatsApp disponible

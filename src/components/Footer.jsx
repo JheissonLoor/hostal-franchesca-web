@@ -117,18 +117,18 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary-500 flex-shrink-0 mt-1" />
                 <span className="text-sm">
-                  Calle Principal #123<br />
-                  Centro de la Ciudad<br />
-                  CP 12345
+                  Jirón Antonio Raymondi s/n<br />
+                  Sihuas, Áncash<br />
+                  CP 02220
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary-500 flex-shrink-0" />
                 <a
-                  href="tel:+123456789"
+                  href="tel:+51993215661"
                   className="text-sm hover:text-primary-400 transition-colors"
                 >
-                  +1 (234) 567-890
+                  +51 993 215 661
                 </a>
               </li>
               <li className="flex items-center space-x-3">
