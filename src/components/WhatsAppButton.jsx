@@ -5,10 +5,10 @@ const WhatsAppButton = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [showTooltip, setShowTooltip] = useState(false)
 
-  // Número de WhatsApp (cambiar por el número real del hostal)
-  const whatsappNumber = '1234567890'
+  // Número de WhatsApp del Hostal Franchesca
+  const whatsappNumber = '51993215661'
   const message = encodeURIComponent(
-    '¡Hola! Me gustaría obtener más información sobre el Hostal Franchesca.'
+    'Hola, me gustaría reservar una habitación en Hostal Franchesca'
   )
 
   useEffect(() => {

@@ -12,7 +12,7 @@ const Hero = () => {
   return (
     <section id="inicio" className="relative min-h-screen flex items-center pt-20">
       {/* Background with overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-600 via-primary-500 to-orange-500 opacity-95"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-600 via-primary-500 to-primary-400 opacity-95"></div>
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070')] bg-cover bg-center mix-blend-overlay opacity-20"></div>
 
       {/* Content */}
@@ -29,9 +29,10 @@ const Hero = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
-              Experimenta la comodidad y calidez de un verdadero hogar en el
-              <span className="font-semibold"> Hostal Franchesca</span>.
-              Donde cada huésped es parte de nuestra familia.
+              Experimenta la comodidad y calidez de un verdadero hogar en
+              <span className="font-semibold"> Sihuas, Áncash</span>.
+              En el <span className="font-semibold">Hostal Franchesca</span>,
+              cada huésped es parte de nuestra familia.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">

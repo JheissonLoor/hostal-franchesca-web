@@ -5,35 +5,35 @@ const Rooms = () => {
   const rooms = [
     {
       id: 1,
-      name: 'Habitación Individual',
+      name: 'Habitación Simple',
       description: 'Perfecta para viajeros solitarios que buscan comodidad y privacidad.',
-      price: 35,
+      price: 30,
       capacity: 1,
       beds: '1 Cama Individual',
       image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=2070',
-      amenities: ['WiFi Gratis', 'TV Cable', 'Baño Privado', 'Escritorio', 'Aire Acondicionado'],
+      amenities: ['WiFi Gratis', 'TV Cable', 'Baño Privado', 'Escritorio', 'Agua Caliente'],
       featured: false,
     },
     {
       id: 2,
       name: 'Habitación Doble',
       description: 'Ideal para parejas o amigos que viajan juntos. Espaciosa y confortable.',
-      price: 50,
+      price: 40,
       capacity: 2,
-      beds: '1 Cama Matrimonial',
+      beds: '2 Camas Individuales',
       image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=2070',
-      amenities: ['WiFi Gratis', 'TV Cable', 'Baño Privado', 'Mini Nevera', 'Aire Acondicionado', 'Balcón'],
+      amenities: ['WiFi Gratis', 'TV Cable', 'Baño Privado', 'Agua Caliente', 'Escritorio'],
       featured: true,
     },
     {
       id: 3,
-      name: 'Habitación Familiar',
-      description: 'Amplia habitación para familias. Diseñada para máximo confort de todos.',
-      price: 75,
-      capacity: 4,
-      beds: '1 Cama Matrimonial + 2 Individuales',
+      name: 'Habitación Matrimonial',
+      description: 'Amplia y cómoda habitación ideal para parejas. Diseñada para tu máximo confort.',
+      price: 50,
+      capacity: 2,
+      beds: '1 Cama Matrimonial',
       image: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=2070',
-      amenities: ['WiFi Gratis', 'TV Cable', 'Baño Privado', 'Mini Nevera', 'Aire Acondicionado', 'Sala de Estar'],
+      amenities: ['WiFi Gratis', 'TV Cable', 'Baño Privado', 'Agua Caliente', 'Escritorio', 'Vista Panorámica'],
       featured: false,
     },
   ]
@@ -114,7 +114,7 @@ const Rooms = () => {
                       <p className="text-sm text-gray-600">Desde</p>
                       <div className="flex items-baseline">
                         <span className="text-4xl font-bold text-primary-600">
-                          ${room.price}
+                          S/ {room.price}
                         </span>
                         <span className="text-gray-600 ml-2">/noche</span>
                       </div>
