@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const Testimonials = () => {
@@ -81,113 +82,161 @@ const Testimonials = () => {
   ]
 
   return (
-    <section id="testimonios" className="py-20 bg-gradient-to-br from-primary-50 to-orange-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="section-title">
-            Lo Que Dicen Nuestros <span className="text-gradient">Huéspedes</span>
+    <section id="testimonios" className="py-20 bg-gradient-warm relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-10 right-10 w-96 h-96 bg-secondary-200/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 left-10 w-96 h-96 bg-primary-200/20 rounded-full blur-3xl"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="section-title mb-4">
+            Lo Que Dicen Nuestros Huéspedes
           </h2>
           <p className="section-subtitle max-w-3xl mx-auto">
             La satisfacción de nuestros huéspedes es nuestra mayor recompensa.
             Lee lo que dicen quienes ya nos visitaron.
           </p>
-        </div>
+        </motion.div>
 
         {/* Testimonials Carousel */}
-        <div className="relative max-w-6xl mx-auto">
+        <div className="relative max-w-6xl mx-auto mb-16">
           <div className="grid md:grid-cols-3 gap-8">
-            {visibleTestimonials.map((testimonial, index) => (
-              <div
-                key={testimonial.id}
-                className={`bg-white rounded-2xl shadow-xl p-8 transition-all duration-500 ${
-                  index === 0 ? 'md:scale-105 md:z-10' : 'md:scale-95 md:opacity-75'
-                }`}
-              >
-                {/* Quote Icon */}
-                <div className="mb-6">
-                  <Quote className="w-10 h-10 text-primary-300" />
-                </div>
+            <AnimatePresence mode="wait">
+              {visibleTestimonials.map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.id}
+                  className={`bg-white rounded-2xl shadow-xl p-8 border border-accent-200 ${
+                    index === 0 ? 'md:scale-105 md:z-10 ring-2 ring-primary-300' : 'md:scale-95 md:opacity-90'
+                  }`}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: index === 0 ? 1 : 0.9, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.5 }}
+                  whileHover={{ scale: index === 0 ? 1.07 : 1, opacity: 1 }}
+                >
+                  {/* Quote Icon */}
+                  <motion.div
+                    className="mb-6"
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ type: "spring", stiffness: 200 }}
+                  >
+                    <Quote className="w-10 h-10 text-primary-400" />
+                  </motion.div>
 
-                {/* Rating */}
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 text-yellow-400 fill-yellow-400"
-                    />
-                  ))}
-                </div>
-
-                {/* Testimonial Text */}
-                <p className="text-gray-700 leading-relaxed mb-6 min-h-[120px]">
-                  "{testimonial.text}"
-                </p>
-
-                {/* Author Info */}
-                <div className="flex items-center space-x-4 pt-6 border-t border-gray-100">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-14 h-14 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-600">{testimonial.location}</p>
-                    <p className="text-xs text-gray-500 mt-1">{testimonial.date}</p>
+                  {/* Rating */}
+                  <div className="flex mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 * i, type: "spring" }}
+                      >
+                        <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                      </motion.div>
+                    ))}
                   </div>
-                </div>
-              </div>
-            ))}
+
+                  {/* Testimonial Text */}
+                  <p className="text-neutral-700 leading-relaxed mb-6 min-h-[120px]">
+                    "{testimonial.text}"
+                  </p>
+
+                  {/* Author Info */}
+                  <div className="flex items-center space-x-4 pt-6 border-t border-accent-200">
+                    <motion.img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-14 h-14 rounded-full object-cover ring-2 ring-primary-200"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    />
+                    <div>
+                      <h4 className="font-bold text-neutral-900">{testimonial.name}</h4>
+                      <p className="text-sm text-neutral-600">{testimonial.location}</p>
+                      <p className="text-xs text-neutral-500 mt-1">{testimonial.date}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
 
           {/* Navigation Buttons */}
           <div className="flex justify-center items-center space-x-4 mt-12">
-            <button
+            <motion.button
               onClick={prevTestimonial}
-              className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl hover:bg-primary-50 transition-all duration-300 group"
+              className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl border border-accent-200 transition-all duration-300 group"
+              whileHover={{ scale: 1.1, backgroundColor: '#E07A5F' }}
+              whileTap={{ scale: 0.9 }}
             >
-              <ChevronLeft className="w-6 h-6 text-primary-600" />
-            </button>
+              <ChevronLeft className="w-6 h-6 text-primary-600 group-hover:text-white" />
+            </motion.button>
 
             {/* Dots Indicator */}
             <div className="flex space-x-2">
               {testimonials.map((_, index) => (
-                <button
+                <motion.button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
                     index === currentIndex
-                      ? 'w-8 bg-primary-600'
-                      : 'w-2 bg-primary-300 hover:bg-primary-400'
+                      ? 'w-10 bg-primary-600'
+                      : 'w-2.5 bg-primary-300 hover:bg-primary-400'
                   }`}
-                ></button>
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                ></motion.button>
               ))}
             </div>
 
-            <button
+            <motion.button
               onClick={nextTestimonial}
-              className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl hover:bg-primary-50 transition-all duration-300 group"
+              className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl border border-accent-200 transition-all duration-300 group"
+              whileHover={{ scale: 1.1, backgroundColor: '#E07A5F' }}
+              whileTap={{ scale: 0.9 }}
             >
-              <ChevronRight className="w-6 h-6 text-primary-600" />
-            </button>
+              <ChevronRight className="w-6 h-6 text-primary-600 group-hover:text-white" />
+            </motion.button>
           </div>
         </div>
 
         {/* Stats */}
-        <div className="mt-16 grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="text-center p-6 bg-white rounded-2xl shadow-lg">
-            <div className="text-5xl font-bold text-gradient mb-2">500+</div>
-            <div className="text-gray-600 font-medium">Huéspedes Satisfechos</div>
-          </div>
-          <div className="text-center p-6 bg-white rounded-2xl shadow-lg">
-            <div className="text-5xl font-bold text-gradient mb-2">4.9</div>
-            <div className="text-gray-600 font-medium">Calificación Promedio</div>
-          </div>
-          <div className="text-center p-6 bg-white rounded-2xl shadow-lg">
-            <div className="text-5xl font-bold text-gradient mb-2">98%</div>
-            <div className="text-gray-600 font-medium">Recomendaciones</div>
-          </div>
-        </div>
+        <motion.div
+          className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          {[
+            { value: '500+', label: 'Huéspedes Satisfechos' },
+            { value: '4.9', label: 'Calificación Promedio' },
+            { value: '98%', label: 'Recomendaciones' }
+          ].map((stat, index) => (
+            <motion.div
+              key={index}
+              className="text-center p-6 bg-white rounded-2xl shadow-lg border border-accent-200 hover:shadow-2xl hover:border-primary-300 transition-all duration-300"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 + index * 0.1 }}
+              whileHover={{ y: -5, scale: 1.05 }}
+            >
+              <div className="text-5xl font-bold text-gradient mb-2">{stat.value}</div>
+              <div className="text-neutral-600 font-medium">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   )
